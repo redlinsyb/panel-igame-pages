@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 功能介绍页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #faf9f8;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: #1e1e1e;
+            padding: 2.5rem 1.25rem;
+        }
+
+        .page {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* 主视觉区 (hero) */
+        .hero {
+            margin-bottom: 3.5rem;
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #121212;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .sub {
+            font-size: 1.05rem;
+            color: #5e5e5e;
+            border-left: 3px solid #2b7a62;
+            padding-left: 1rem;
+            margin-top: 0.6rem;
+            max-width: 480px;
+        }
+
+        /* 通用卡片 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            margin: 2.8rem 0;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), 0 6px 18px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 12px 28px rgba(0, 0, 0, 0.03);
+        }
+
+        .card h2 {
+            font-size: 1.35rem;
+            font-weight: 520;
+            letter-spacing: -0.01em;
+            color: #1d2b2b;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eae6e3;
+            padding-bottom: 0.5rem;
+        }
+
+        .card ul, .card p {
+            font-size: 1rem;
+            color: #2d2d2d;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            padding: 0.35rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .card li::before {
+            content: "·";
+            font-weight: 700;
+            color: #2b7a62;
+            display: inline-block;
+            width: 1rem;
+            flex-shrink: 0;
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 0.9rem;
+            margin-top: 0.8rem;
+        }
+
+        .tag {
+            background: #f0ece8;
+            padding: 0.2rem 1rem;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            color: #1e2c2a;
+        }
+
+        .tag.highlight {
+            background: #e4efe8;
+            color: #1d4e3d;
+        }
+
+        /* 自然链接段落 */
+        .link-note {
+            margin: 3rem 0 2.5rem 0;
+            padding: 1.6rem 2rem;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+            font-size: 1.02rem;
+        }
+
+        .link-note p {
+            margin-bottom: 0.9rem;
+        }
+
+        .link-note p:last-child {
+            margin-bottom: 0;
+        }
+
+        .link-note a {
+            color: #1f6d58;
+            text-decoration: none;
+            font-weight: 470;
+            border-bottom: 1px solid #cbdcd4;
+            transition: border-color 0.15s;
+        }
+
+        .link-note a:hover {
+            border-bottom-color: #1f6d58;
+        }
+
+        /* 可信提示块 */
+        .info-block {
+            background: #f3f1ef;
+            border-radius: 60px;
+            padding: 1.2rem 2rem;
+            font-size: 0.95rem;
+            color: #3a3a3a;
+            margin: 2.2rem 0;
+            line-height: 1.6;
+        }
+
+        .info-block strong {
+            color: #1b3f36;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            display: flex;
+            flex-direction: column;
+            gap: 1.3rem;
+            margin: 2.5rem 0 0.5rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e0db;
+            padding-bottom: 0.8rem;
+        }
+
+        .faq-item .q {
+            font-weight: 500;
+            color: #0e1e1c;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item .a {
+            font-size: 0.95rem;
+            color: #494949;
+        }
+
+        .faq-item .a a {
+            color: #1f6d58;
+            text-decoration: none;
+            border-bottom: 1px solid #cbdcd4;
+        }
+
+        .faq-item .a a:hover {
+            border-bottom-color: #1f6d58;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e2ddd7;
+            margin: 2.2rem 0 1rem;
+        }
+
+        .footer-note {
+            font-size: 0.85rem;
+            color: #7a7a7a;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 500px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .card {
+                padding: 1.4rem 1.2rem;
+            }
+            .link-note {
+                padding: 1.2rem 1.2rem;
+            }
+            .info-block {
+                border-radius: 32px;
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 主视觉 -->
+    <div class="hero">
+        <h1>爱游戏 · 功能与用途</h1>
+        <div class="sub">快速了解这个平台能做什么、适合谁、怎么用。</div>
+    </div>
+
+    <!-- 用途卡片：用信息卡片说明核心用途 -->
+    <div class="card-grid">
+        <div class="card">
+            <h2>主要用途</h2>
+            <ul>
+                <li>统一管理游戏账户及关联信息</li>
+                <li>查看常用工具与游戏状态更新</li>
+                <li>获取官方渠道的操作指引</li>
+                <li>个人偏好设置与通知管理</li>
+            </ul>
+            <div class="tag-group">
+                <span class="tag highlight">账户中心</span>
+                <span class="tag">状态概览</span>
+                <span class="tag">快捷设置</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>适合人群</h2>
+            <ul>
+                <li>希望集中管理自己游戏信息的用户</li>
+                <li>需要快速查找相关功能和设置的玩家</li>
+                <li>对界面简洁度有要求、不想被广告打扰的人</li>
+                <li>想通过官方途径确认信息或配置的使用者</li>
+            </ul>
+            <div class="tag-group">
+                <span class="tag">个人用户</span>
+                <span class="tag">轻度&中度玩家</span>
+                <span class="tag">信息整理型</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 自然链接段落：将a标签平实嵌入句中 -->
+    <div class="link-note">
+        <p>如果你正在找一个界面干净、功能直接的后台类页面，可以打开 <a href="https://panel--igame.com">爱游戏</a> 看看它的布局风格。这个面板主要围绕账户信息、状态提醒和基础设置展开，没有复杂的导航层级。</p>
+        <p>页面内提供的工具入口都比较明确，适合想要快速定位功能的人。如果你习惯在同一个地方查看常用信息，<a href="https://panel--igame.com">爱游戏</a> 的设计思路可能符合你的期待。</p>
+        <p>另外，如果你需要确认某些操作路径，或者想了解面板里包含哪些模块，直接访问 <a href="https://panel--igame.com">爱游戏</a> 会更直观，光凭文字描述不如自己浏览一遍来得清楚。</p>
+    </div>
+
+    <!-- 提示区域 -->
+    <div class="info-block">
+        <strong>一点提示：</strong> 初次打开页面时，可以留意顶部导航和左侧栏目，主要功能基本都陈列在那里。如果没有看到预期内容，可以检查一下登录状态或网络连接。
+    </div>
+
+    <!-- FAQ 摘要（简洁版） -->
+    <div class="faq-mini">
+        <div class="faq-item">
+            <div class="q">这个页面是做什么的？</div>
+            <div class="a">它是一个信息面板，提供账户管理、状态查看和常用设置。你可以直接去 <a href="https://panel--igame.com">爱游戏</a> 感受一下整体布局。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">需要注册才能使用吗？</div>
+            <div class="a">通常需要登录才能看到个性化内容。具体注册方式请参考页面内的指引。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">移动端浏览效果如何？</div>
+            <div class="a">面板针对不同屏幕做了适配，手机和平板都可以正常查看主要内容。</div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="footer-note">
+        说明页 · 仅介绍用途与场景
+    </div>
+
+</div>
+</body>
+</html>
